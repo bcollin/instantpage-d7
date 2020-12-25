@@ -1,0 +1,48 @@
+<?php
+
+// Implements hook_page_build().
+function instantpage_page_build(&$page) {
+  $js_path = '/' . drupal_get_path('module', 'instantpage') . '/js/instantpage.js';
+
+  // drupal_add_js() won't let us change the script type.
+  $page['page_bottom']['instantpage'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'script',
+    '#attributes' => array(
+      'type' => 'module',
+      'src' => $js_path,
+      'defer' => 'defer',
+    ),
+    '#value' => '', // Required for the script tag to properly close.
+  );
+}
+
+// Implements hook_preprocess_link(&$vars)().
+function instantpage_preprocess_link(&$vars) {
+  if ($vars['path'] === 'user/logout') {
+  // Make sure the logout menu does not get prefetched. This
+  // may not work depending on how the logout link was
+  // generated.
+
+    $vars['options']['attributes']['data-no-instant'] = 'data-no-instant';
+  }
+}
+
+// Implements hook_help().
+function instantpage_help($path, $arg) {
+  $out = '';
+  switch ($path) {
+    case 'admin/help#instantpage':
+      // Crudely and lazily inline the README.txt file.
+      $filepath = dirname(__FILE__) . '/README.txt';
+      if (file_exists($filepath)) {
+        $readme = file_get_contents($filepath);
+      }
+  }
+
+  if (!empty($readme)) {
+    $out = "<pre>$readme</pre>";
+  }
+
+  return $out;
+}

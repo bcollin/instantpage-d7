@@ -1,0 +1,3 @@
+name = Instant Page
+description = Prefetches a linked page's HTML on mouse hover or mouse down.
+core = 7.x
