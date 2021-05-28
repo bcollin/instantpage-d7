@@ -39,17 +39,21 @@ If you want to whitelist or blacklist links, you can use standard
 Drupal hooks such as HOOK_preprocess_link() in your theme to do so.
 
 See https://instant.page to find out how whitelisting and blacklisting
-works and see this module's module file for an example.
+works and see this module's .module file for an example.
 
 
 Troubleshooting
 ---------------
 
-For me, this currently only does something useful in Chrome, see
-https://github.com/instantpage/instant.page/issues/7 about Firefox support.
-It may be that it works in Firefox for others, feedback is appreciated.
+* This module seems to work out of the box in Chrome, but I had to change a
+browser setting to get it to work in Firefox.
 
-This module blacklists the path 'user/logout'. Are there any others that
+This was probably because I use Ublock Origin.
+
+If you want to disable or enable prefetching in Firefox, see
+https://support.mozilla.org/en-US/kb/how-stop-firefox-making-automatic-connections .
+
+* This module blacklists the path 'user/logout'. Are there any others that
 should be blacklisted?
 
 
