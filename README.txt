@@ -39,7 +39,8 @@ If you want to whitelist or blacklist links, you can use standard
 Drupal hooks such as HOOK_preprocess_link() in your theme to do so.
 
 See https://instant.page to find out how whitelisting and blacklisting
-works and see this module's .module file for an example.
+works and see this module's .module file for an example (e.g.
+instantpage_preprocess_link()).
 
 
 Troubleshooting
